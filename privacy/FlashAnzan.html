@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flash Anzan Privacy Policy</title>
+  <style>
+    :root {
+      --bg: #0b0b0d;
+      --card: #15161a;
+      --text: #f2f3f5;
+      --muted: #b8bcc6;
+      --line: #2a2d35;
+      --accent: #5cc8ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: radial-gradient(1200px 500px at 10% -10%, #1d2330 0%, var(--bg) 50%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+      line-height: 1.65;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 16px 56px;
+    }
+    .top {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .title-wrap h1 {
+      font-size: clamp(24px, 3vw, 34px);
+      margin: 0;
+      letter-spacing: 0.2px;
+    }
+    .title-wrap p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    select {
+      background: #11131a;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
+      min-width: 180px;
+    }
+    .card {
+      background: color-mix(in srgb, var(--card) 92%, black 8%);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 14px;
+    }
+    h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+    p { margin: 0 0 10px; }
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    li { margin: 4px 0; }
+    a { color: var(--accent); }
+    footer {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="top">
+      <div class="title-wrap">
+        <h1 id="title"></h1>
+        <p id="updated"></p>
+      </div>
+      <label for="langSelect" id="langLabel" style="display:none;">Language</label>
+      <select id="langSelect" aria-labelledby="langLabel"></select>
+    </div>
+
+    <div class="card">
+      <p id="intro"></p>
+    </div>
+
+    <div id="sections"></div>
+    <section class="card">
+      <h2 id="legalTitle"></h2>
+      <ul>
+        <li id="legalApp"></li>
+        <li id="legalOperator"></li>
+        <li id="legalContact"></li>
+        <li id="legalScope"></li>
+      </ul>
+    </section>
+    <footer id="footer"></footer>
+  </main>
+
+  <script>
+    const GOOGLE_PRIVACY = "https://policies.google.com/privacy";
+    const GOOGLE_ADS = "https://policies.google.com/technologies/ads";
+    const APP_NAME = "Flash Anzan";
+    const OPERATOR_NAME = "BookBold Software";
+    const CONTACT_EMAIL = "bookboldsoftware@gmail.com";
+
+    const I18N = {
+      "ja": {
+        name: "日本語",
+        dir: "ltr",
+        title: "Flash Anzan プライバシーポリシー",
+        updated: "最終更新日: 2026-02-11",
+        intro: "このプライバシーポリシーは、Flash Anzan（以下「本アプリ」）における情報の取り扱いを説明するものです。",
+        footer: "本ポリシーは公開用の基本版です。運用にあわせて随時更新してください。",
+        sections: [
+          { h: "1. 収集する情報", items: [
+            "本アプリは、設定値（桁数・口数・感覚・言語など）や学習進捗（弱点情報を含む）を、端末内（UserDefaults）に保存します。",
+            "アカウント登録やログイン機能はありません。"
+          ]},
+          { h: "2. 広告配信について", items: [
+            `本アプリは Google Mobile Ads SDK を利用して広告を表示します。Google により、広告配信・不正防止・計測のための情報（端末識別子、IPアドレス、アプリ利用情報等）が処理される場合があります。詳しくは <a href="${GOOGLE_PRIVACY}" target="_blank" rel="noopener noreferrer">Google プライバシーポリシー</a> および <a href="${GOOGLE_ADS}" target="_blank" rel="noopener noreferrer">Google 広告ポリシー</a> をご確認ください。`
+          ]},
+          { h: "3. 収集しない情報", items: [
+            "本アプリは、氏名・メールアドレスなどの個人情報をアプリ内で直接収集しません。",
+            "カメラ、マイク、連絡先、位置情報は利用しません。"
+          ]},
+          { h: "4. データの保存期間", items: [
+            "端末内に保存された設定・学習データは、ユーザーがリセットまたはアプリを削除するまで保持されます。"
+          ]},
+          { h: "5. お子さまの利用", items: [
+            "本アプリは学習用途を想定していますが、広告SDKの仕様により一部データ処理が行われる場合があります。保護者の方は端末設定や利用状況をご確認ください。"
+          ]},
+          { h: "6. セキュリティ", items: [
+            "本アプリは端末内保存を基本とし、不要な情報送信を行わない設計です。"
+          ]},
+          { h: "7. ユーザーの選択", items: [
+            "アプリ内のリセット操作で学習進捗を削除できます。",
+            "広告関連の詳細な設定は、端末の広告設定や各プラットフォームの設定をご利用ください。"
+          ]},
+          { h: "8. ポリシーの変更", items: [
+            "法令や機能変更に応じて本ポリシーを更新する場合があります。"
+          ]},
+          { h: "9. お問い合わせ", items: [
+            "お問い合わせは、App Store の開発者連絡先からお願いします。"
+          ]}
+        ]
+      },
+      "en": {
+        name: "English",
+        dir: "ltr",
+        title: "Flash Anzan Privacy Policy",
+        updated: "Last updated: 2026-02-11",
+        intro: "This Privacy Policy explains how Flash Anzan (the \"App\") handles information.",
+        footer: "This is a basic public version. Update as needed for your operation.",
+        sections: [
+          { h: "1. Information We Collect", items: [
+            "The App stores settings (digits, count, interval, language, etc.) and learning progress (including weakness data) locally on your device (UserDefaults).",
+            "The App does not require account registration or login."
+          ]},
+          { h: "2. Advertising", items: [
+            `The App uses Google Mobile Ads SDK to show ads. Google may process data (such as device identifiers, IP address, and app interaction data) for ad delivery, fraud prevention, and measurement. See <a href="${GOOGLE_PRIVACY}" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a> and <a href="${GOOGLE_ADS}" target="_blank" rel="noopener noreferrer">Google Ads Policy</a>.`
+          ]},
+          { h: "3. Data We Do Not Collect", items: [
+            "The App does not directly collect personal information such as name or email address.",
+            "The App does not use camera, microphone, contacts, or location."
+          ]},
+          { h: "4. Data Retention", items: [
+            "Locally stored settings and learning data remain until you reset the app data or delete the app."
+          ]},
+          { h: "5. Children", items: [
+            "The App is designed for learning use. Depending on ad SDK behavior, limited data processing may occur. Guardians should review device settings and usage."
+          ]},
+          { h: "6. Security", items: [
+            "The App is designed to store data locally and avoid unnecessary data transmission."
+          ]},
+          { h: "7. Your Choices", items: [
+            "You can clear learning progress from the in-app reset function.",
+            "For ad-related controls, use your device and platform privacy/advertising settings."
+          ]},
+          { h: "8. Policy Updates", items: [
+            "This policy may be updated to reflect legal or feature changes."
+          ]},
+          { h: "9. Contact", items: [
+            "Please contact us via the developer contact listed on the App Store."
+          ]}
+        ]
+      },
+      "zh-Hans": {
+        name: "简体中文",
+        dir: "ltr",
+        title: "Flash Anzan 隐私政策",
+        updated: "最后更新：2026-02-11",
+        intro: "本隐私政策说明 Flash Anzan（以下简称“本应用”）如何处理信息。",
+        footer: "这是基础公开版本，可根据运营情况更新。",
+        sections: [
+          { h: "1. 我们收集的信息", items: [
+            "本应用会将设置（位数、口数、间隔、语言等）和学习进度（含弱点数据）保存在设备本地（UserDefaults）。",
+            "本应用不需要账号注册或登录。"
+          ]},
+          { h: "2. 广告", items: [
+            `本应用使用 Google Mobile Ads SDK 展示广告。Google 可能为广告投放、防欺诈和统计处理相关数据（如设备标识符、IP 地址、应用交互信息）。详情请参阅 <a href="${GOOGLE_PRIVACY}" target="_blank" rel="noopener noreferrer">Google 隐私政策</a> 与 <a href="${GOOGLE_ADS}" target="_blank" rel="noopener noreferrer">Google 广告政策</a>。`
+          ]},
+          { h: "3. 我们不收集的信息", items: [
+            "本应用不直接收集姓名、邮箱等个人信息。",
+            "本应用不使用相机、麦克风、通讯录或定位。"
+          ]},
+          { h: "4. 数据保留", items: [
+            "本地设置和学习数据会一直保留，直到您在应用中重置或卸载应用。"
+          ]},
+          { h: "5. 儿童使用", items: [
+            "本应用用于学习场景。根据广告 SDK 的行为，可能发生有限数据处理。建议监护人确认设备设置与使用情况。"
+          ]},
+          { h: "6. 安全", items: [
+            "本应用以本地存储为主，避免不必要的数据传输。"
+          ]},
+          { h: "7. 您的选择", items: [
+            "您可通过应用内重置功能清除学习进度。",
+            "广告相关设置请使用设备或平台隐私/广告设置。"
+          ]},
+          { h: "8. 政策更新", items: [
+            "本政策可能因法律或功能变化而更新。"
+          ]},
+          { h: "9. 联系方式", items: [
+            "请通过 App Store 开发者联系方式与我们联系。"
+          ]}
+        ]
+      },
+      "ko": {
+        name: "한국어",
+        dir: "ltr",
+        title: "Flash Anzan 개인정보 처리방침",
+        updated: "최종 업데이트: 2026-02-11",
+        intro: "본 개인정보 처리방침은 Flash Anzan(이하 \"앱\")의 정보 처리 방식을 설명합니다.",
+        footer: "기본 공개 버전이며 운영에 맞게 갱신해 주세요.",
+        sections: [
+          { h: "1. 수집하는 정보", items: [
+            "앱은 설정값(자릿수, 개수, 간격, 언어 등)과 학습 진행 정보(약점 데이터 포함)를 기기 내부(UserDefaults)에 저장합니다.",
+            "회원가입/로그인 기능은 없습니다."
+          ]},
+          { h: "2. 광고", items: [
+            `앱은 Google Mobile Ads SDK를 사용합니다. 광고 제공, 부정 방지, 측정을 위해 Google이 데이터(기기 식별자, IP 주소, 앱 사용 정보 등)를 처리할 수 있습니다. 자세한 내용은 <a href="${GOOGLE_PRIVACY}" target="_blank" rel="noopener noreferrer">Google 개인정보처리방침</a> 및 <a href="${GOOGLE_ADS}" target="_blank" rel="noopener noreferrer">Google 광고 정책</a>을 확인해 주세요.`
+          ]},
+          { h: "3. 수집하지 않는 정보", items: [
+            "앱은 이름, 이메일 등 개인식별 정보를 직접 수집하지 않습니다.",
+            "카메라, 마이크, 연락처, 위치 정보를 사용하지 않습니다."
+          ]},
+          { h: "4. 보관 기간", items: [
+            "기기에 저장된 설정/학습 데이터는 사용자가 리셋하거나 앱을 삭제할 때까지 유지됩니다."
+          ]},
+          { h: "5. 아동", items: [
+            "앱은 학습 용도이며, 광고 SDK 특성상 제한적인 데이터 처리가 발생할 수 있습니다. 보호자는 기기 설정과 사용 상태를 확인해 주세요."
+          ]},
+          { h: "6. 보안", items: [
+            "앱은 로컬 저장 중심으로 동작하며 불필요한 전송을 최소화합니다."
+          ]},
+          { h: "7. 사용자 선택", items: [
+            "앱 내 리셋 기능으로 학습 데이터를 삭제할 수 있습니다.",
+            "광고 관련 설정은 기기/플랫폼 설정을 이용해 주세요."
+          ]},
+          { h: "8. 정책 변경", items: [
+            "법령 또는 기능 변경에 따라 본 정책이 갱신될 수 있습니다."
+          ]},
+          { h: "9. 문의", items: [
+            "문의는 App Store 개발자 연락처를 이용해 주세요."
+          ]}
+        ]
+      },
+      "hi": {
+        name: "हिन्दी",
+        dir: "ltr",
+        title: "Flash Anzan गोपनीयता नीति",
+        updated: "अंतिम अपडेट: 2026-02-11",
+        intro: "यह गोपनीयता नीति बताती है कि Flash Anzan (\"ऐप\") जानकारी को कैसे संभालता है।",
+        footer: "यह एक बेसिक सार्वजनिक संस्करण है; आवश्यकता अनुसार अपडेट करें।",
+        sections: [
+          { h: "1. हम कौन-सी जानकारी लेते हैं", items: [
+            "ऐप सेटिंग्स (digits, count, interval, भाषा आदि) और learning progress (कमज़ोरी डेटा सहित) को डिवाइस में लोकली (UserDefaults) सेव करता है।",
+            "ऐप में अकाउंट/लॉगिन की आवश्यकता नहीं है।"
+          ]},
+          { h: "2. विज्ञापन", items: [
+            `ऐप विज्ञापन दिखाने के लिए Google Mobile Ads SDK का उपयोग करता है। विज्ञापन वितरण, धोखाधड़ी-रोकथाम और माप के लिए Google कुछ डेटा (device identifier, IP address, app interaction data) प्रोसेस कर सकता है। विवरण: <a href="${GOOGLE_PRIVACY}" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a> और <a href="${GOOGLE_ADS}" target="_blank" rel="noopener noreferrer">Google Ads Policy</a>.`
+          ]},
+          { h: "3. हम क्या नहीं लेते", items: [
+            "ऐप नाम, ईमेल जैसी व्यक्तिगत जानकारी सीधे एकत्र नहीं करता।",
+            "ऐप कैमरा, माइक्रोफोन, कॉन्टैक्ट्स या लोकेशन का उपयोग नहीं करता।"
+          ]},
+          { h: "4. डेटा रखने की अवधि", items: [
+            "लोकल सेटिंग्स और लर्निंग डेटा तब तक रहता है जब तक आप ऐप डेटा रीसेट या ऐप हटाते नहीं।"
+          ]},
+          { h: "5. बच्चों के लिए", items: [
+            "ऐप सीखने के उपयोग के लिए है। विज्ञापन SDK के कारण सीमित डेटा प्रोसेसिंग हो सकती है। अभिभावक डिवाइस सेटिंग्स देखें।"
+          ]},
+          { h: "6. सुरक्षा", items: [
+            "ऐप का डिज़ाइन लोकल स्टोरेज आधारित है और अनावश्यक डेटा ट्रांसमिशन से बचता है।"
+          ]},
+          { h: "7. आपके विकल्प", items: [
+            "इन-ऐप रीसेट से आप learning progress मिटा सकते हैं।",
+            "विज्ञापन नियंत्रण के लिए डिवाइस/प्लेटफ़ॉर्म privacy settings का उपयोग करें।"
+          ]},
+          { h: "8. नीति में बदलाव", items: [
+            "कानूनी या फीचर बदलाव के अनुसार यह नीति अपडेट हो सकती है।"
+          ]},
+          { h: "9. संपर्क", items: [
+            "कृपया App Store पर दिए गए developer contact से संपर्क करें।"
+          ]}
+        ]
+      },
+      "th": {
+        name: "ไทย",
+        dir: "ltr",
+        title: "นโยบายความเป็นส่วนตัว Flash Anzan",
+        updated: "อัปเดตล่าสุด: 2026-02-11",
+        intro: "นโยบายนี้อธิบายการจัดการข้อมูลของ Flash Anzan (\"แอป\")",
+        footer: "นี่เป็นฉบับพื้นฐานสำหรับเผยแพร่ สามารถปรับปรุงเพิ่มเติมได้",
+        sections: [
+          { h: "1. ข้อมูลที่เก็บ", items: [
+            "แอปบันทึกค่าตั้งค่า (จำนวนหลัก จำนวนโจทย์ ช่วงเวลา ภาษา ฯลฯ) และความคืบหน้าการฝึก (รวมข้อมูลจุดอ่อน) ไว้ในเครื่อง (UserDefaults)",
+            "ไม่มีการสมัครบัญชีหรือเข้าสู่ระบบ"
+          ]},
+          { h: "2. โฆษณา", items: [
+            `แอปใช้ Google Mobile Ads SDK เพื่อแสดงโฆษณา โดย Google อาจประมวลผลข้อมูลบางอย่าง (เช่น ตัวระบุอุปกรณ์ IP และข้อมูลการใช้งานแอป) เพื่อการแสดงผลโฆษณา ป้องกันการทุจริต และการวัดผล โปรดดู <a href="${GOOGLE_PRIVACY}" target="_blank" rel="noopener noreferrer">นโยบายความเป็นส่วนตัวของ Google</a> และ <a href="${GOOGLE_ADS}" target="_blank" rel="noopener noreferrer">นโยบายโฆษณาของ Google</a>`
+          ]},
+          { h: "3. ข้อมูลที่ไม่เก็บ", items: [
+            "แอปไม่เก็บข้อมูลส่วนบุคคลโดยตรง เช่น ชื่อหรืออีเมล",
+            "แอปไม่ใช้กล้อง ไมโครโฟน รายชื่อผู้ติดต่อ หรือพิกัด"
+          ]},
+          { h: "4. ระยะเวลาจัดเก็บ", items: [
+            "ข้อมูลที่เก็บในเครื่องจะคงอยู่จนกว่าผู้ใช้จะรีเซ็ตข้อมูลหรือลบแอป"
+          ]},
+          { h: "5. เด็กและเยาวชน", items: [
+            "แอปออกแบบเพื่อการเรียนรู้ แต่ SDK โฆษณาอาจมีการประมวลผลข้อมูลบางส่วน ผู้ปกครองควรตรวจสอบการตั้งค่าอุปกรณ์"
+          ]},
+          { h: "6. ความปลอดภัย", items: [
+            "แอปเน้นการจัดเก็บในเครื่องและหลีกเลี่ยงการส่งข้อมูลที่ไม่จำเป็น"
+          ]},
+          { h: "7. สิทธิ์ของผู้ใช้", items: [
+            "คุณสามารถลบความคืบหน้าการฝึกผ่านปุ่มรีเซ็ตในแอป",
+            "การตั้งค่าโฆษณาให้ใช้การตั้งค่าความเป็นส่วนตัวของอุปกรณ์/แพลตฟอร์ม"
+          ]},
+          { h: "8. การเปลี่ยนแปลงนโยบาย", items: [
+            "นโยบายนี้อาจปรับปรุงตามกฎหมายหรือการเปลี่ยนฟีเจอร์"
+          ]},
+          { h: "9. ติดต่อเรา", items: [
+            "ติดต่อผ่านข้อมูลผู้พัฒนาใน App Store"
+          ]}
+        ]
+      },
+      "ms": {
+        name: "Bahasa Melayu",
+        dir: "ltr",
+        title: "Dasar Privasi Flash Anzan",
+        updated: "Kemas kini terakhir: 2026-02-11",
+        intro: "Dasar ini menerangkan cara Flash Anzan (\"Aplikasi\") mengendalikan maklumat.",
+        footer: "Ini versi asas untuk penerbitan awam dan boleh dikemas kini mengikut keperluan.",
+        sections: [
+          { h: "1. Maklumat yang Dikumpul", items: [
+            "Aplikasi menyimpan tetapan (digit, bilangan, sela masa, bahasa, dll.) dan kemajuan pembelajaran (termasuk data kelemahan) secara setempat pada peranti (UserDefaults).",
+            "Tiada pendaftaran akaun atau log masuk."
+          ]},
+          { h: "2. Iklan", items: [
+            `Aplikasi menggunakan Google Mobile Ads SDK untuk memaparkan iklan. Google mungkin memproses data (ID peranti, alamat IP, data interaksi aplikasi) untuk penghantaran iklan, pencegahan penipuan, dan pengukuran. Rujuk <a href="${GOOGLE_PRIVACY}" target="_blank" rel="noopener noreferrer">Dasar Privasi Google</a> dan <a href="${GOOGLE_ADS}" target="_blank" rel="noopener noreferrer">Dasar Iklan Google</a>.`
+          ]},
+          { h: "3. Maklumat yang Tidak Dikumpul", items: [
+            "Aplikasi tidak mengumpul maklumat peribadi seperti nama atau emel secara langsung.",
+            "Aplikasi tidak menggunakan kamera, mikrofon, kenalan, atau lokasi."
+          ]},
+          { h: "4. Tempoh Simpanan Data", items: [
+            "Data setempat disimpan sehingga pengguna menetapkan semula data atau memadam aplikasi."
+          ]},
+          { h: "5. Kanak-kanak", items: [
+            "Aplikasi ini untuk pembelajaran. Bergantung pada SDK iklan, pemprosesan data terhad mungkin berlaku."
+          ]},
+          { h: "6. Keselamatan", items: [
+            "Aplikasi direka untuk storan setempat dan mengelakkan penghantaran data yang tidak perlu."
+          ]},
+          { h: "7. Pilihan Pengguna", items: [
+            "Kemajuan pembelajaran boleh dipadam melalui fungsi reset dalam aplikasi.",
+            "Tetapan berkaitan iklan boleh diurus melalui tetapan peranti/platform."
+          ]},
+          { h: "8. Kemas Kini Dasar", items: [
+            "Dasar ini boleh dikemas kini apabila terdapat perubahan undang-undang atau ciri."
+          ]},
+          { h: "9. Hubungi", items: [
+            "Sila hubungi melalui maklumat pembangun di App Store."
+          ]}
+        ]
+      },
+      "vi": {
+        name: "Tiếng Việt",
+        dir: "ltr",
+        title: "Chính Sách Quyền Riêng Tư Flash Anzan",
+        updated: "Cập nhật lần cuối: 2026-02-11",
+        intro: "Chính sách này mô tả cách Flash Anzan (\"Ứng dụng\") xử lý thông tin.",
+        footer: "Đây là bản cơ bản để công khai, có thể cập nhật khi cần.",
+        sections: [
+          { h: "1. Thông Tin Thu Thập", items: [
+            "Ứng dụng lưu cài đặt (số chữ số, số hạng, khoảng thời gian, ngôn ngữ...) và tiến độ học (bao gồm dữ liệu điểm yếu) trên thiết bị (UserDefaults).",
+            "Không yêu cầu tài khoản hoặc đăng nhập."
+          ]},
+          { h: "2. Quảng Cáo", items: [
+            `Ứng dụng dùng Google Mobile Ads SDK để hiển thị quảng cáo. Google có thể xử lý dữ liệu (định danh thiết bị, IP, dữ liệu tương tác ứng dụng) cho mục đích phân phối quảng cáo, chống gian lận và đo lường. Xem <a href="${GOOGLE_PRIVACY}" target="_blank" rel="noopener noreferrer">Chính sách quyền riêng tư của Google</a> và <a href="${GOOGLE_ADS}" target="_blank" rel="noopener noreferrer">Chính sách quảng cáo của Google</a>.`
+          ]},
+          { h: "3. Thông Tin Không Thu Thập", items: [
+            "Ứng dụng không trực tiếp thu thập thông tin cá nhân như tên hoặc email.",
+            "Ứng dụng không dùng camera, microphone, danh bạ hoặc vị trí."
+          ]},
+          { h: "4. Thời Gian Lưu Trữ", items: [
+            "Dữ liệu cục bộ được giữ cho đến khi bạn đặt lại dữ liệu hoặc gỡ ứng dụng."
+          ]},
+          { h: "5. Trẻ Em", items: [
+            "Ứng dụng phục vụ học tập. Tùy theo SDK quảng cáo, có thể có xử lý dữ liệu ở mức giới hạn."
+          ]},
+          { h: "6. Bảo Mật", items: [
+            "Ứng dụng ưu tiên lưu trữ cục bộ và tránh truyền dữ liệu không cần thiết."
+          ]},
+          { h: "7. Lựa Chọn Của Người Dùng", items: [
+            "Bạn có thể xóa tiến độ học bằng chức năng reset trong ứng dụng.",
+            "Cài đặt liên quan quảng cáo có thể quản lý trong cài đặt thiết bị/nền tảng."
+          ]},
+          { h: "8. Cập Nhật Chính Sách", items: [
+            "Chính sách có thể được cập nhật theo thay đổi pháp lý hoặc tính năng."
+          ]},
+          { h: "9. Liên Hệ", items: [
+            "Vui lòng liên hệ qua thông tin nhà phát triển trên App Store."
+          ]}
+        ]
+      },
+      "ar": {
+        name: "العربية",
+        dir: "rtl",
+        title: "سياسة الخصوصية لتطبيق Flash Anzan",
+        updated: "آخر تحديث: 2026-02-11",
+        intro: "توضح هذه السياسة كيفية تعامل تطبيق Flash Anzan (\"التطبيق\") مع المعلومات.",
+        footer: "هذه نسخة أساسية للنشر العام ويمكن تحديثها حسب الحاجة.",
+        sections: [
+          { h: "1. المعلومات التي نجمعها", items: [
+            "يحفظ التطبيق الإعدادات (عدد الخانات، عدد الأرقام، الفاصل الزمني، اللغة...) وتقدم التعلم (بما في ذلك بيانات نقاط الضعف) محليًا على الجهاز (UserDefaults).",
+            "لا يتطلب التطبيق إنشاء حساب أو تسجيل دخول."
+          ]},
+          { h: "2. الإعلانات", items: [
+            `يستخدم التطبيق Google Mobile Ads SDK لعرض الإعلانات. قد تعالج Google بعض البيانات (معرفات الجهاز، عنوان IP، وبيانات التفاعل مع التطبيق) لأغراض عرض الإعلانات ومنع الاحتيال والقياس. راجع <a href="${GOOGLE_PRIVACY}" target="_blank" rel="noopener noreferrer">سياسة خصوصية Google</a> و <a href="${GOOGLE_ADS}" target="_blank" rel="noopener noreferrer">سياسة إعلانات Google</a>.`
+          ]},
+          { h: "3. ما لا نجمعه", items: [
+            "لا يجمع التطبيق بشكل مباشر معلومات شخصية مثل الاسم أو البريد الإلكتروني.",
+            "لا يستخدم التطبيق الكاميرا أو الميكروفون أو جهات الاتصال أو الموقع."
+          ]},
+          { h: "4. مدة الاحتفاظ بالبيانات", items: [
+            "تبقى البيانات المحلية حتى يقوم المستخدم بإعادة الضبط أو حذف التطبيق."
+          ]},
+          { h: "5. الأطفال", items: [
+            "التطبيق مخصص للتعلم. وبحسب سلوك SDK الإعلانات، قد تتم معالجة محدودة للبيانات."
+          ]},
+          { h: "6. الأمان", items: [
+            "يعتمد التطبيق على التخزين المحلي ويتجنب إرسال البيانات غير الضرورية."
+          ]},
+          { h: "7. خيارات المستخدم", items: [
+            "يمكن حذف تقدم التعلم عبر زر إعادة الضبط داخل التطبيق.",
+            "يمكن التحكم في إعدادات الإعلانات عبر إعدادات الجهاز/المنصة."
+          ]},
+          { h: "8. تحديثات السياسة", items: [
+            "قد يتم تحديث هذه السياسة وفقًا للتغييرات القانونية أو الوظيفية."
+          ]},
+          { h: "9. التواصل", items: [
+            "يرجى التواصل عبر معلومات المطور في App Store."
+          ]}
+        ]
+      },
+      "ru": {
+        name: "Русский",
+        dir: "ltr",
+        title: "Политика конфиденциальности Flash Anzan",
+        updated: "Обновлено: 2026-02-11",
+        intro: "Эта политика описывает, как приложение Flash Anzan (\"Приложение\") обрабатывает информацию.",
+        footer: "Это базовая публичная версия. При необходимости обновляйте ее.",
+        sections: [
+          { h: "1. Какие данные собираются", items: [
+            "Приложение сохраняет настройки (разрядность, количество чисел, интервал, язык и т.д.) и учебный прогресс (включая данные слабых мест) локально на устройстве (UserDefaults).",
+            "Регистрация и вход в аккаунт не требуются."
+          ]},
+          { h: "2. Реклама", items: [
+            `Приложение использует Google Mobile Ads SDK для показа рекламы. Google может обрабатывать данные (идентификаторы устройства, IP-адрес, данные взаимодействия с приложением) для показа рекламы, предотвращения мошенничества и измерений. См. <a href="${GOOGLE_PRIVACY}" target="_blank" rel="noopener noreferrer">Политику конфиденциальности Google</a> и <a href="${GOOGLE_ADS}" target="_blank" rel="noopener noreferrer">Политику рекламы Google</a>.`
+          ]},
+          { h: "3. Какие данные не собираются", items: [
+            "Приложение не собирает напрямую персональные данные, такие как имя или email.",
+            "Приложение не использует камеру, микрофон, контакты или геолокацию."
+          ]},
+          { h: "4. Срок хранения", items: [
+            "Локальные данные хранятся до сброса данных в приложении или удаления приложения."
+          ]},
+          { h: "5. Дети", items: [
+            "Приложение предназначено для обучения. В зависимости от SDK рекламы может происходить ограниченная обработка данных."
+          ]},
+          { h: "6. Безопасность", items: [
+            "Приложение ориентировано на локальное хранение и минимизацию лишней передачи данных."
+          ]},
+          { h: "7. Ваш выбор", items: [
+            "Вы можете удалить учебный прогресс через функцию сброса в приложении.",
+            "Параметры рекламы можно настроить в настройках устройства/платформы."
+          ]},
+          { h: "8. Обновления политики", items: [
+            "Политика может обновляться при изменении закона или функциональности."
+          ]},
+          { h: "9. Контакты", items: [
+            "Свяжитесь с нами через контакты разработчика в App Store."
+          ]}
+        ]
+      }
+    };
+
+    const LEGAL_TEXT = {
+      "ja": {
+        title: "運営者情報",
+        app: "対象アプリ: ",
+        op: "運営者: ",
+        contact: "連絡先: ",
+        scope: "本ポリシーは本アプリにのみ適用されます。外部サイト・外部サービスは各提供元のポリシーをご確認ください。"
+      },
+      "en": {
+        title: "Operator Information",
+        app: "App: ",
+        op: "Operator: ",
+        contact: "Contact: ",
+        scope: "This policy applies only to this App. For external websites/services, please review each provider's own policy."
+      },
+      "zh-Hans": {
+        title: "运营者信息",
+        app: "适用应用：",
+        op: "运营者：",
+        contact: "联系方式：",
+        scope: "本政策仅适用于本应用。外部网站/服务请参阅其各自隐私政策。"
+      },
+      "ko": {
+        title: "운영자 정보",
+        app: "대상 앱: ",
+        op: "운영자: ",
+        contact: "연락처: ",
+        scope: "본 정책은 본 앱에만 적용됩니다. 외부 사이트/서비스는 각 제공자의 정책을 확인해 주세요."
+      },
+      "hi": {
+        title: "संचालक जानकारी",
+        app: "ऐप: ",
+        op: "संचालक: ",
+        contact: "संपर्क: ",
+        scope: "यह नीति केवल इस ऐप पर लागू होती है। बाहरी वेबसाइट/सेवाओं के लिए उनकी अपनी नीति देखें।"
+      },
+      "th": {
+        title: "ข้อมูลผู้ให้บริการ",
+        app: "แอป: ",
+        op: "ผู้ให้บริการ: ",
+        contact: "ติดต่อ: ",
+        scope: "นโยบายนี้ใช้กับแอปนี้เท่านั้น สำหรับเว็บไซต์/บริการภายนอก โปรดดูนโยบายของผู้ให้บริการนั้น"
+      },
+      "ms": {
+        title: "Maklumat Pengendali",
+        app: "Aplikasi: ",
+        op: "Pengendali: ",
+        contact: "Hubungi: ",
+        scope: "Dasar ini hanya terpakai kepada Aplikasi ini. Untuk laman/perkhidmatan luar, sila rujuk dasar penyedia masing-masing."
+      },
+      "vi": {
+        title: "Thông Tin Đơn Vị Vận Hành",
+        app: "Ứng dụng: ",
+        op: "Đơn vị vận hành: ",
+        contact: "Liên hệ: ",
+        scope: "Chính sách này chỉ áp dụng cho Ứng dụng này. Với website/dịch vụ bên ngoài, vui lòng xem chính sách của từng bên."
+      },
+      "ar": {
+        title: "معلومات المشغّل",
+        app: "التطبيق: ",
+        op: "المشغّل: ",
+        contact: "التواصل: ",
+        scope: "تنطبق هذه السياسة على هذا التطبيق فقط. بالنسبة للمواقع/الخدمات الخارجية، يُرجى مراجعة سياسة كل جهة."
+      },
+      "ru": {
+        title: "Информация об операторе",
+        app: "Приложение: ",
+        op: "Оператор: ",
+        contact: "Контакт: ",
+        scope: "Политика применяется только к этому Приложению. Для внешних сайтов/сервисов изучайте политику соответствующего поставщика."
+      }
+    };
+
+    const langOrder = ["ja", "en", "zh-Hans", "ko", "hi", "th", "ms", "vi", "ar", "ru"];
+    const langSelect = document.getElementById("langSelect");
+    const titleEl = document.getElementById("title");
+    const updatedEl = document.getElementById("updated");
+    const introEl = document.getElementById("intro");
+    const sectionsEl = document.getElementById("sections");
+    const footerEl = document.getElementById("footer");
+    const legalTitleEl = document.getElementById("legalTitle");
+    const legalAppEl = document.getElementById("legalApp");
+    const legalOperatorEl = document.getElementById("legalOperator");
+    const legalContactEl = document.getElementById("legalContact");
+    const legalScopeEl = document.getElementById("legalScope");
+
+    function bestLanguage() {
+      const saved = localStorage.getItem("privacy_lang");
+      if (saved && I18N[saved]) return saved;
+      const nav = (navigator.language || "en").toLowerCase();
+      if (nav.startsWith("ja")) return "ja";
+      if (nav.startsWith("zh")) return "zh-Hans";
+      if (nav.startsWith("ko")) return "ko";
+      if (nav.startsWith("hi")) return "hi";
+      if (nav.startsWith("th")) return "th";
+      if (nav.startsWith("ms")) return "ms";
+      if (nav.startsWith("vi")) return "vi";
+      if (nav.startsWith("ar")) return "ar";
+      if (nav.startsWith("ru")) return "ru";
+      return "en";
+    }
+
+    function render(lang) {
+      const t = I18N[lang] || I18N.en;
+      document.documentElement.lang = lang;
+      document.documentElement.dir = t.dir || "ltr";
+      titleEl.textContent = t.title;
+      updatedEl.textContent = t.updated;
+      introEl.textContent = t.intro;
+      footerEl.textContent = t.footer;
+      const l = LEGAL_TEXT[lang] || LEGAL_TEXT.en;
+      legalTitleEl.textContent = l.title;
+      legalAppEl.textContent = l.app + APP_NAME;
+      legalOperatorEl.textContent = l.op + OPERATOR_NAME;
+      legalContactEl.textContent = l.contact + CONTACT_EMAIL;
+      legalScopeEl.textContent = l.scope;
+      sectionsEl.innerHTML = t.sections.map((s) => (
+        `<section class="card"><h2>${s.h}</h2><ul>${s.items.map((it) => `<li>${it}</li>`).join("")}</ul></section>`
+      )).join("");
+      localStorage.setItem("privacy_lang", lang);
+      langSelect.value = lang;
+    }
+
+    langOrder.forEach((code) => {
+      const opt = document.createElement("option");
+      opt.value = code;
+      opt.textContent = I18N[code].name;
+      langSelect.appendChild(opt);
+    });
+
+    langSelect.addEventListener("change", (e) => render(e.target.value));
+    render(bestLanguage());
+  </script>
+</body>
+</html>
